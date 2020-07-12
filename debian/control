@@ -1,8 +1,21 @@
 Source: rtcom-eventlogger-ui
 Priority: extra
-Maintainer: Senko Rasic <senko.rasic@collabora.co.uk>
-Build-Depends: debhelper (>= 5), cdbs, autotools-dev, libglib2.0-dev, libgtk2.0-dev, libdbus-1-dev, librtcom-eventlogger-dev (>= 1.1), librtcom-eventlogger-plugins-dev (>= 1.0), libosso-dev, libosso-abook-dev (>= 4.20081010), libhildon1-dev, libmcclient-dev (>= 5), libclockcore-dev, libcityinfo-dev, libtime-dev
-Standards-Version: 3.7.2
+Maintainer: Ivan J. <parazyd@dyne.org>
+Build-Depends:
+ debhelper (>= 10),
+ libglib2.0-dev,
+ libgtk2.0-dev,
+ libdbus-1-dev,
+ librtcom-eventlogger-dev (>= 1.1),
+ librtcom-eventlogger-plugins-dev (>= 1.0),
+ libosso-dev,
+ libosso-abook-dev (>= 4.20081010),
+ libhildon1-dev,
+ libmcclient-dev (>= 5),
+ libclockcore-dev,
+ libcityinfo-dev,
+ libtime-dev,
+Standards-Version: 4.3.0
 Section: libs
 
 Package: librtcom-eventlogger-ui1
@@ -12,36 +25,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, librtcom-eventlogger-ui0 (= ${Sourc
 Description: Event Logger Widget.
   Event Logger Widget.
 
-Package: librtcom-eventlogger-ui1-dbg
-Section: libdevel
-Architecture: any
-Depends: librtcom-eventlogger-ui1 (= ${Source-Version})
-Description: Event Logger Widget. Debug symbols
-  Event Logger Widget.
-  .
-  Debug symbols
-
-Package: librtcom-eventlogger-ui0
-Section: libs
-Architecture: any
-Description: Event Logger widget (transitional dummy package)
-  Transitional dummy package to ensure SSU and migration to librtcom-eventlogger-ui1
-  .
-  If your application depends on librtcom-eventlogger-ui0, it will stop working.
-  Please port it to librtcom-eventlogger-ui1. The eventlogger documentation
-  explains what the changes are and how to port your application.
-
-Package: librtcom-eventlogger-ui0-dbg
-Section: libdevel
-Architecture: any
-Depends: librtcom-eventlogger-ui0 (= ${Source-Version})
-Description: Event Logger widget (transitional dummy package)
-  Transitional dummy package to ensure SSU and migration to librtcom-eventlogger-ui1
-  .
-  If your application depends on librtcom-eventlogger-ui0, it will stop working.
-  Please port it to librtcom-eventlogger-ui1. The eventlogger documentation
-  explains what the changes are and how to port your application.
-
 Package: librtcom-eventlogger-ui-dev
 Section: libdevel
 Architecture: any
@@ -50,4 +33,3 @@ Description: Event Logger Widget. Development files.
   Event Logger Widget.
   .
   Development files.
-
