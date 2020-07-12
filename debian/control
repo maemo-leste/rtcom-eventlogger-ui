@@ -21,14 +21,14 @@ Section: libs
 Package: librtcom-eventlogger-ui1
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, librtcom-eventlogger-ui0 (= ${Source-Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Event Logger Widget.
   Event Logger Widget.
 
 Package: librtcom-eventlogger-ui-dev
 Section: libdevel
 Architecture: any
-Depends: librtcom-eventlogger-ui1 (= ${Source-Version}), librtcom-eventlogger-dev (>= 1.1)
+Depends: librtcom-eventlogger-ui1 (= ${binary:Version}), librtcom-eventlogger-dev (>= 1.1)
 Description: Event Logger Widget. Development files.
   Event Logger Widget.
   .
