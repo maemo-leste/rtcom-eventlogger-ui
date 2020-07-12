@@ -1,0 +1,775 @@
+rtcom-eventlogger-ui (1.4-2+0m5) unstable; urgency=low
+
+  * This entry has been added by BIFH queue processor
+    Suffix +0m5 added to package revision
+
+ -- Mahawadhi Ratna <ext-ratna.2.mahawadhi@nokia.com>  Thu, 04 Feb 2010 11:40:15 +0200
+
+rtcom-eventlogger-ui (1.4-2) unstable; urgency=low
+
+  * addresses: NB#154356 - SSU update is not happening from PR1.1.1 to PR1.2
+    librtcom-eventlogger-ui1 depends now on librtcom-eventlogger-ui0 so SSU
+    works and HAM is happy. This breaks any 3th party app which depends
+    on librtcom-eventlogger-ui0 which thinks its dependency is fulfilled!
+  * 
+
+ -- Reto Zingg <reto.zingg@nokia.com>  Wed, 03 Feb 2010 15:25:33 +0200
+
+rtcom-eventlogger-ui (1.4-1) unstable; urgency=low
+
+  * Don't show groupchat messages unless it's explicitly requested.
+    Fixes: NB#136835
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 29 Jan 2010 09:33:40 +0100
+
+rtcom-eventlogger-ui (1.3-1) unstable; urgency=low
+
+  * Providing a transitional dummy package for librtcom-eventlogger-ui0 to
+    librtcom-eventlogger-ui1 transition. Fixes: NB#154356
+  * Reapplied the lost fix for timezone refresh bug. Fixes: NB#126173
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 26 Jan 2010 11:29:47 +0100
+
+rtcom-eventlogger-ui (1.2-1) unstable; urgency=low
+
+  * Add support for HildonLiveSearch. Fixes: NB#144931
+  * Explicitly unset presence icon if no icon should be shown. Fixes: NB#148587
+  * Remove unneccessary handlers for contact addition and removal, as addressbook
+    updates evenlogger anyways. Fixes: NB#151739
+  * Removed fake Provides and set the package properly as conflicting with
+    librtcom-eventlogger-ui0.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Thu, 21 Jan 2010 14:48:44 +0100
+
+rtcom-eventlogger-ui (1.1-2) unstable; urgency=low
+
+  * Clear account cache when doing refresh. Fixes: NB#130785.
+  * Don't attempt contact discovery for empty numbers. Fixes: NB#146768
+  * When several discovered contacts match remote uid, ignore all of them.
+    Fixes: NB#147753
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 18 Dec 2009 17:16:23 +0100
+
+rtcom-eventlogger-ui (1.1-1.1) unstable; urgency=low
+
+  * Update to new RTComElIter 1.1 API
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 08 Dec 2009 11:30:31 +0100
+
+rtcom-eventlogger-ui (1.0-1.3) unstable; urgency=low
+
+  * Fixed group detection logic. Fixes: NB#148587, NB#148681.
+  * Removed unused development icons from packages. Fixes: NB#147778.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Wed, 02 Dec 2009 13:51:43 +0100
+
+rtcom-eventlogger-ui (1.0-1.2) unstable; urgency=low
+
+  * Marked as Provides librtcom-eventlogger-ui0 for BIFH recompile bootstrapping
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Thu, 26 Nov 2009 15:32:06 +0100
+
+rtcom-eventlogger-ui (1.0-1) unstable; urgency=low
+
+  * Added event direction and flags to the model.
+  * Using service name and flags to identify groupchat messages
+  * Using libtool versioning
+  * Requiring rtcom-eventlogger 1.0, rtcom-eventlogger-plugins 1.0
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 20 Nov 2009 11:35:43 +0100
+
+rtcom-eventlogger-ui (0.57-6) unstable; urgency=low
+
+  * Force TZ info reload by libc in TZ change callback.
+    Fixes: NB#126173
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 24 Nov 2009 16:01:34 +0100
+
+rtcom-eventlogger-ui (0.57-5) unstable; urgency=low
+
+  * Don't refresh view on spurious DBus signals. Fixes: NB#146737.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Mon, 16 Nov 2009 12:57:04 +0100
+
+rtcom-eventlogger-ui (0.57-4) unstable; urgency=low
+
+  * Delay refresh to avoid multiple refreshes on bulk contact update.
+    Fixes: NB#146380
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Thu, 12 Nov 2009 11:12:45 +0100
+
+rtcom-eventlogger-ui (0.57-3) unstable; urgency=low
+
+  * Use vcard field matching for contact discovery. Fixes: NB#134754.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Wed, 11 Nov 2009 15:39:00 +0100
+
+rtcom-eventlogger-ui (0.57-2) unstable; urgency=low
+
+  * Use default avatar border radius and crop avatars if required.
+    Fixes: NB#137843
+  * Refresh the view if timezone changes. Fixes: NB#126173
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 06 Nov 2009 14:06:18 +0100
+
+rtcom-eventlogger-ui (0.57-1) unstable; urgency=low
+
+  * Update log view when display name ordering changes. Fixes: NB#127631.
+  * Use rounded avatars. Fixes: NB#137843.
+  * Removed spurious warnings/criticals. Fixes: NB#138719, NB#141780.
+  * Added rtcom_log_view_set_show_display_names(). Fixes: NB#139291.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Wed, 14 Oct 2009 16:59:18 +0200
+
+rtcom-eventlogger-ui (0.55-1) unstable; urgency=low
+
+  * Fix a memory leak. Fixes #133528.
+  * When searching, match remote uid if display name is not present.
+    Fixes #133457.
+  * Added event type column to the model.
+  * Fix scrolling-to-top issue.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Wed, 19 Aug 2009 15:14:41 +0200
+
+rtcom-eventlogger-ui (0.54-1) unstable; urgency=low
+
+  * Bump version due to API change.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 14 Aug 2009 09:40:06 +0200
+
+rtcom-eventlogger-ui (0.53-2) unstable; urgency=low
+
+  * Fix service icon leak. Fixes: NB#131223.
+  * Don't inherit limit from query. Fixes: NB#131667.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 14 Aug 2009 09:21:06 +0200
+
+rtcom-eventlogger-ui (0.53-1) unstable; urgency=low
+
+  * New API: rtcom_log_view_set_fixed_width()
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 11 Aug 2009 16:40:39 +0200
+
+rtcom-eventlogger-ui (0.52-2) unstable; urgency=low
+
+  * Tokenize search string when filtering contacts.
+    Fixes: NB#119438, alreadyfixes #128399.
+  * Fix a few leaks.
+  * Reset query offset when refreshing the query.
+    Fixes: NB#130464, alreadyfixes #129856, #129937, #129420.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Wed, 05 Aug 2009 14:30:40 +0200
+
+rtcom-eventlogger-ui (0.52-1) unstable; urgency=low
+
+  * Add support for group chat titles.
+  * Remove pixbufs population thread and do that in the main thread.
+    Fixes: NB#129395.
+  * Fix off-by-one while getting values from the eventlogger.
+  * Fix grouping of non-abook contacts when grouping by contact.
+  * Store the discovered abook uid to the model so it can be used by the apps.
+  * Pass keyboard layout switching sequence to the live search input method.
+  * Bump dependancies for eventlogger and eventlogger-plugins.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 31 Jul 2009 15:03:40 +0200
+
+rtcom-eventlogger-ui (0.51-2) unstable; urgency=low
+
+  * Use MC to get the service icon. Fixes: NB#106264.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 17 Jul 2009 19:21:57 +0200
+
+rtcom-eventlogger-ui (0.51-1) unstable; urgency=low
+
+  * Fix a crash introduced with the fix for NB#124921
+
+ -- Lassi Syrjala <lassi.syrjala@nokia.com>  Thu, 16 Jul 2009 09:31:51 +0300
+
+rtcom-eventlogger-ui (0.50-1) unstable; urgency=low
+
+  * Fix a possible null-pointer dereference.
+  * Split contact discovery from pixbuf population.
+    Fixes: NB#124623, NB#116692.
+  * For group chats hide the presence and set a fixed avatar.
+  * Stop the running background threads before clearing the
+    list store. Fixes: NB#124921.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 14 Jul 2009 18:56:43 +0200
+
+rtcom-eventlogger-ui (0.49-1) unstable; urgency=low
+
+  * Tweak the live search bar. Fixes: NB#121318, NB#121307
+
+ -- Lassi Syrjala <lassi.syrjala@nokia.com>  Mon,  6 Jul 2009 14:07:46 +0300
+
+rtcom-eventlogger-ui (0.48-1) unstable; urgency=low
+
+  * Do not crash resolving contacts for hidden numbers
+    Fixes: NB#124927
+
+ -- Lassi Syrjala <lassi.syrjala@nokia.com>  Tue, 30 Jun 2009 11:44:05 +0300
+
+rtcom-eventlogger-ui (0.47-1) unstable; urgency=low
+
+  * Use active colour for missed calls. Fixes: NB#109311.
+  * Store discovered contact's display name in model.
+    Fixes: NB#120079, NB#123961.
+  * Properly increment offset while populating the model in
+    batches. Fixes: NB#122457.
+  * Disable GtkTreeView's builtin incremental search.
+    Fixes: NB#123806.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 26 Jun 2009 09:14:42 +0200
+
+rtcom-eventlogger-ui (0.46-1) unstable; urgency=low
+
+  * Fix a problem with an overflowing text cell
+
+ -- Lassi Syrjala <lassi.syrjala@nokia.com>  Tue, 23 Jun 2009 13:50:20 +0300
+
+rtcom-eventlogger-ui (0.45-1) unstable; urgency=low
+
+  * Improve the panning performance of the log view (Fixes: NB#109869)
+  * Fix a few memory leaks (Fixes: NB#117663)
+
+ -- Lassi Syrjala <lassi.syrjala@nokia.com>  Mon, 22 Jun 2009 11:30:02 +0300
+
+rtcom-eventlogger-ui (0.44-1) unstable; urgency=low
+
+  * Set the event text colour based on read/unread state.
+    Fixes: NB#116593.
+  * If unread message count in conversation is >1, show the
+    number in parentheses (analogous to the missed calls count indicator).
+  * Cache pango markup to speed up text cell function.
+  * Guard strcmp call in _find_event. Fixes: NB#119700.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Wed, 17 Jun 2009 14:31:00 +0200
+
+rtcom-eventlogger-ui (0.43-3) unstable; urgency=low
+
+  * RTComLogSearchBar: fixed brown paper bug (missing argument in debug msg).
+
+  Previous commit was mis-tagged as 0.43-2, so tagging as 0.43-3.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 29 May 2009 15:29:39 +0200
+
+rtcom-eventlogger-ui (0.43-1) unstable; urgency=low
+
+  * New method for unhooking search bar from the widget.
+    Fixes: NB#117531.
+  * Added service column to the model.
+  * Fix missing break in _event_deleted_callback(). Fixes: NB#110815.
+  * RTComLogModel: when finding the event in the model, always try to match id.
+    Fixes: NB#105097.
+  * Fix a leak in _stage_cached(). Fixes: NB#108348.
+  * Fix object ref in rtcom_log_search_bar_set_model(). Fixes: NB#110825.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 29 May 2009 12:49:25 +0200
+
+rtcom-eventlogger-ui (0.42-5) unstable; urgency=low
+
+  * added libcityinfo-dev as build debendency 
+
+ -- Reto Zingg <reto.zingg@nokia.com>  Fri, 22 May 2009 15:07:26 +0300
+
+rtcom-eventlogger-ui (0.42-4) unstable; urgency=low
+
+  * Use master instead of roster contacts so the display name and
+    avatar from abook is correct. Fixes: NB#97198, NB#108998, NB#117262.
+  * Store discovered abook uid in RTComLogModel so the application can
+    use it. Fixes: NB#97639, NB#100957.
+  * Don't pass potentially NULL string to strcmp(). Fixes: NB#113368.
+  * Use correct logical string in case the caller name is empty.
+    Fixes: NB#114546.
+  * Change newlines to space when displaying event content. Fixes: NB#114676
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Thu, 21 May 2009 11:17:27 +0200
+
+rtcom-eventlogger-ui (0.42-3) unstable; urgency=low
+
+  * Gracefully handle invalid contacts in contact presence/avatar callbacks
+    Fixes: NB#108807.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Thu, 30 Apr 2009 08:19:36 +0200
+
+rtcom-eventlogger-ui (0.42-2) unstable; urgency=low
+
+  * changed dependency on libclockcore-dev instead of libclockcore-public-dev 
+
+ -- Reto Zingg <reto.zingg@nokia.com>  Wed, 29 Apr 2009 16:28:53 +0300
+
+rtcom-eventlogger-ui (0.42-1) unstable; urgency=low
+
+  * Depends on rtcom-eventlogger 0.70 and rtcom-eventlogger-plugins 0.25
+  * Move event row text generation from plugins to ui, so we can
+    use data from abook, theme info and date settings.
+    Fixes: NB#96373, NB#97086, NB#97198, NB#100957, NB#101657, NB#105427,
+    NB#105870, NB#106973.
+  * Change search bar UI to match the spec. Fixes: NB#101556, NB#106887.
+  * Code logic fixes. Fixes: NB#110825.
+  * Properly update view rows. Fixes. NB#106898.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 28 Apr 2009 06:42:02 +0200
+
+rtcom-eventlogger-ui (0.41-2) unstable; urgency=low
+
+  * Fix live filter matching. Fixes: NB#104177.
+  * Act when aggregator becames ready. Fixes: NB#106264, NB#107362.
+  * Fix check for (lack of) service in all-deleted signal. Fixes: NB#106273.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Wed, 25 Mar 2009 15:39:54 +0100
+
+rtcom-eventlogger-ui (0.41-1) unstable; urgency=low
+
+  * Update rtcom-eventlogger dependancy to 0.69 due to API change.
+  * RTComLogModel: ignore events/changes where service is not one
+    the model is interested in.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Sun, 22 Mar 2009 17:43:56 +0100
+
+rtcom-eventlogger-ui (0.40-2) unstable; urgency=low
+
+  * Don't force stopping the aggregator it's going to get disposed anyways.
+    Fixes: NB#104047.
+  * Don't enforce event count limit if the limit wasn't set.
+    Fixes: NB#105011. 
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Mon, 16 Mar 2009 16:19:37 +0100
+
+rtcom-eventlogger-ui (0.40-1) unstable; urgency=low
+
+  * Free strings used for matching events when in updated/deleted handlers.
+    Fixes: NB#101974.
+  * Use new MC method for fetching profile service icon. Fixes: NB#100355.
+  * Properly free event iterator in two corner cases. Fixes: NB#101980.
+  * Disconnect from aggregator/contact signals on dispose. Fixes: NB#102942.
+  * Use OssoABookWaitable interface to wait for aggregator readiness.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Fri, 06 Mar 2009 12:16:11 +0100
+
+rtcom-eventlogger-ui (0.39-1) unstable; urgency=low
+
+  * Changed appearance to mimic osso-addressbook contact search
+    entry. Fixes: NB#92717.
+  * Changed search criteria to match the UI spec. Fixes: NB#95954.
+  * Don't launch search bar if there are no entries in the model.
+    Fixes: NB#96327.
+  * Fix check/ref of query object in the log model. Fixes: NB#102463.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 25 Feb 2009 14:49:42 +0100
+
+rtcom-eventlogger-ui (0.38-1) unstable; urgency=low
+
+  * Refresh the model on refresh-hint signal.
+  * Don't assume abook aggregator is ready if using external
+    aggregator.
+  * When adding a new event, trim number of events if limit
+    was exceeded. Fixes: NB#92004.
+  * Memory leak fixes: Fixes. NB#98279.
+
+ -- Senko Rasic <senko.rasic@collabora.co.uk>  Tue, 27 Jan 2009 11:08:30 +0100
+
+rtcom-eventlogger-ui (0.37-1) unstable; urgency=low
+
+  * RTComLogModel: support for limiting number of returned events.
+  * Added rtcom_log_model_populate_query() API function.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Wed, 31 Dec 2008 12:05:40 +0200
+
+rtcom-eventlogger-ui (0.36-1) unstable; urgency=low
+
+  * Introducing a "create-aggregator" property that defaults to TRUE. Set this
+  to FALSE if you want to prevent the RTComLogModel from ever creating its own
+  OssoABookAggregator. This is usefult if you create a model and then plan to
+  give your own aggregator to it later.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Sun, 14 Dec 2008 12:22:40 +0200
+
+rtcom-eventlogger-ui (0.35-1) unstable; urgency=low
+
+  * Using the proper icons.
+
+ -- Salvatore Iovene <siovene@debian.cosmic>  Tue, 25 Nov 2008 17:09:35 +0200
+
+rtcom-eventlogger-ui (0.34-1) unstable; urgency=low
+
+  * Getting contacts right away before the first population, rather than
+  waiting for the first event.
+
+ -- Salvatore Iovene <siovene@debian.cosmic>  Tue, 25 Nov 2008 15:51:24 +0200
+
+rtcom-eventlogger-ui (0.33-1) unstable; urgency=low
+
+  * Disconnecting signals from backend upon disposal. Fixes: NB#93087.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Fri, 21 Nov 2008 11:56:48 +0200
+
+rtcom-eventlogger-ui (0.32-1) unstable; urgency=low
+
+  * rtcom-log-model.c: fixing a possible race condition.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 18 Nov 2008 10:49:44 +0200
+
+rtcom-eventlogger-ui (0.31-1) unstable; urgency=low
+
+  * rtcom-log-view.c: disconnecting signals when unplugging the old model.
+  Fixes: NB#90016.
+  * rtcom-log-view.c: made some private functions static.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Wed, 15 Oct 2008 10:45:38 +0300
+
+rtcom-eventlogger-ui (0.30-1) unstable; urgency=low
+
+  * rtcom-log-model.c: reacting to the all-deleted signal, and refreshing or
+  clearing the model accordingly.
+  * rtcom-log-model.c: do not add new event to a model if its service is not
+  filtered in. FIXES #86434.
+  * rtcom-log-model.[ch], example.c: API CHANGE: rtcom_log_module_populate now
+  takes a const gchar** as second argument, instead of the (now removed)
+  RTComLogModelPopulationType enum.
+  * Bumping dependency from rtcom-eventlogger to 0.51 and from
+  rtcom-eventlogger-plugins to 0.11.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Mon, 13 Oct 2008 10:09:05 +0300
+
+rtcom-eventlogger-ui (0.29-1) unstable; urgency=low
+
+  * Adding the two new extra arguments of the new-event dbus message to the
+  callback.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  2 Oct 2008 13:53:19 +0300
+
+rtcom-eventlogger-ui (0.28-1) unstable; urgency=low
+
+  * Removing a faulty g_debug.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  2 Oct 2008 11:48:37 +0300
+
+rtcom-eventlogger-ui (0.27-1) unstable; urgency=low
+
+  * Cosmetic changes.
+  * Fix in doxygen.
+  * Improving some code readability.
+  * example.c: implementing RTCOM_EL_QUERY_GROUP_BY_UIDS.
+  * rtcom-log-model.c: implementing RTCOM_EL_QUERY_GROUP_BY_UIDS.
+  * configure.ac: adding the --enable-debug flag, that will enable g_debug spam
+  * rtcom-log-model.c (_event_updated_callback): improving readability.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  2 Oct 2008 11:16:08 +0300
+
+rtcom-eventlogger-ui (0.26-1) unstable; urgency=low
+
+  * configure.ac, debian/control: bumping dependency from rtcom-eventlogger to
+    0.47. Adding dependency from rtcom-eventlogger-plugins 0.6. Bumping version
+    to 0.26.
+  * rtcom-log-model.c: don't create an aggregator if there are no events in the
+    database. Only create one (if there isn't one already provided), when we
+    get a new event that has a remote-ebook-uid.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Wed,  3 Sep 2008 14:57:37 +0300
+
+rtcom-eventlogger-ui (0.25-1) unstable; urgency=low
+
+  * rtcom-log-model.h (rtcom_log_model_set_group_by): typo fix in doxygen comment
+  * rtcom-log-model.c (rtcom_log_model_dispose): increase code readability.
+  * rtcom-log-model.c: optimizing account resolution taking rosters into account
+    (pun not intended).
+  * example.c, rtcom-log-model.[ch]: adding rtcom_log_model_set_abook_aggregator.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Mon,  1 Sep 2008 10:50:12 +0300
+
+rtcom-eventlogger-ui (0.24-1) unstable; urgency=low
+
+  * Removing forbidden word.
+  * src/rtcom-log-model.c (_populate_pixbufs): unreffing the McProfile when not needed anymore.
+  * src/rtcom-log-model.c, src/rtcom-log-view.c: now resolving avatar even if
+    the roster contacts are not defined.
+  * src/rtcom-log-model.c (_account_data_free): fixing a double unref.~
+  * src/rtcom-log-model.c: referencing the contacts we get from the
+    OssoABookAggregator; refreshing presence, service_icon and avatar
+    from a spawned thread if the aggregator wasn't ready at the moment
+    of population.
+  * src/rtcom-log-model.c (_stage_cached): typo fix in g_debug.
+  *  src/rtcom-log-model.c (_stage_cached): more detailed g_debug.
+  * example.c: populating with ALL upon start.
+  * rtcom-eventlogger-ui/rtcom-log-columns.h, src/rtcom-log-model.c,
+    src/rtcom-log-view.c: service icon brought back into the view.
+  * src/rtcom-log-model.c (_stage_cached): fix an uninitialized variable.
+  * rtcom-eventlogger-ui/rtcom-log-columns.h, src/rtcom-log-model.c,
+    src/rtcom-log-view.c: presence and avatar ported to new address-book
+    APIS.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Mon, 25 Aug 2008 14:43:27 +0300
+
+rtcom-eventlogger-ui (0.23-1) unstable; urgency=low
+
+  * source and destination renamed to local and remote, just like in
+    rtcom-eventlogger
+  * osso-addressbook references dropped in order to reimplement presence and
+    avatar update after abook's API change
+    WARNING: THIS REVISION IS LACKING FEATURES.
+  * Merge branch 'group-by-contact'
+  * src/rtcom-log-model.c: taking care of keeping the view updated also when
+    events are deleted, in case of GROUP_BY_CONTACT;
+  * example/example.c: change the label of the grouping button when grouping
+    changes.
+  * src/rtcom-log-model.c: storing the remote-ebook-uid along and correctly
+    update the view if it's in GROUP_BY_CONTACT mode and new events are
+    added or modified.
+  * example/example.c, rtcom-eventlogger-ui/rtcom-log-model.h,
+    src/rtcom-log-model.c:
+    Changing grouping so that it could be also of type CONTACT
+    (the button in the example now cycles);
+    source-ebook-uid references renamed to remote-ebook-uid to mirror the
+    changes in rtcom-eventlogger.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  7 Aug 2008 12:18:57 +0300
+
+rtcom-eventlogger-ui (0.22-1) unstable; urgency=low
+
+  * rtcom-log-{model,view,search-bar}.c: dispose methods implemented.
+  * rtcom-log-model.c (_stage_cached): removed redundant checks and overkilling memset 0.
+  * rtcom-log-search-bar.c (_visible_func): some code simplified.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Fri,  4 Jul 2008 11:38:08 +0300
+
+rtcom-eventlogger-ui (0.21-1) unstable; urgency=low
+
+  * rtcom-log-model.c (_stage_cached): fixing 2 memory leaks.
+  * rtcom-log-model.c (_get_local_and_remote_accounts): fixing a memory leak.
+  * rtcom-log-model.c (rtcom_log_model_populate): calling the staging function
+    directly (rather than thru a g_idle) when populat
+  * rtcom-log-model.c (_threaded_cached_load): using NULL rather than 0 to init a pointer.
+  * rtcom-log-model.c: (_stage_cached): fixed a memory leak with the avatar pixbuf.
+  * rtcom-log-model.c: (_stage_cached): fixing 2 memory leaks related to the cached events.
+  * rtcom-log-search-bar.c (rtcom_log_search_bar_finalize): removed unreffing of a GtkWidget.
+  * rtcom-log-model.c (rtcom_log_model_finalize): checking if current_query is valid before unreffing it.
+  * rtcom-log-search-bar.c (rtcom_log_search_bar_set_model): reffing the model.
+  * rtcom-log-search-bar.c (rtcom_log_search_bar_finalize): disconnecting the signal handlers.
+    _visible_func implemented: finally the view is filtered.
+  * example/example.c, rtcom-eventlogger-ui/rtcom-log-search-bar.h,
+    rtcom-eventlogger-ui/rtcom-log-view.h, src/rtcom-log-search-bar.c
+    src/rtcom-log-view.c: the view uses the model filter, so that filtering
+    will really show.
+  * rtcom-log-model.c: refactoring the staging code so that it uses the
+    GValueArray rather than the RTComElEvent, when caching and staging the
+    events. This allows greater flexibility.
+  * rtcom-log-columns.h, rtcom-log-model.c: adding an extra column to the model
+    for storing the displayed-name. It'll be used when filtering.
+  * example.c: adding the code for the search-bar.
+  * rtcom-log-search-bar.{h,c}: the search bar shows and hides according t o
+    specs (mostly).
+  * Some GObject boilerplate.
+  * Empty object definition and adding files to Makefiles.
+  * My usual vim flags added.
+  * Fixing the copyright notice.
+  * Adding the rtcom-log-search-bar.h file.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  3 Jul 2008 11:45:44 +0300
+
+rtcom-eventlogger-ui (0.20-1) unstable; urgency=low
+
+  * rtcom-log-model.c (_stage_cached): BUGFIX: when an event is deleted, and the
+    group happens therefore to be less recent than another recent group, it
+    is moved down to the right place.
+
+  * rtcom-log-model.c (_new_event_callback): BUGFIX: setting the group property of
+    the query, so that when it will be staged, later on, that event will know
+    whether to replace an existing one as representative of that group, or sim
+    get stacked on top of the model.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Mon, 23 Jun 2008 16:10:03 +0300
+
+rtcom-eventlogger-ui (0.19-1) unstable; urgency=low
+
+  * rtcom-log-model.c:
+    (_stage_cached): figuring out when, in grouping mode, a newly added event is
+    being added to an existing group. In that case simulate moving the group on
+    top by deleting the old representitive of the group.
+    (_new_event_callback): removing useless additional_iter and just use a local
+    one; plus, fixing a memory leak.
+    (_event_deleted_callback): implementing handler for the "event-deleted" signal.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu, 19 Jun 2008 15:16:19 +0300
+
+rtcom-eventlogger-ui (0.18-1) unstable; urgency=low
+
+  * Fixed a bug: when the account of the remote contact couldn't be determined
+    because there was more than one recipient, the account data structure got
+    freed, and with it the service icon was lost. Freeing the account data is not
+    necessary anyway because it will be freed later on when the map is emptied.
+
+  * rtcom-log-model.c, rtcom-log-view.c, rtcom-log-columns.h:
+    complying to the UI Spec 1.0, i.e. the service icon is in a separate column
+    and not composited on top of the avatar anymore.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 17 Jun 2008 13:39:21 +0300
+
+rtcom-eventlogger-ui (0.17-1) unstable; urgency=low
+
+  * rtcom-log-model.c:
+    no need to keep a "current iterator" in the model;
+    unreffing the iterator after the query in the populate() function, thus
+    removing a bug that was causing the database to stay locked;
+  * configure.ac, debian/control:
+    bumping dependency from rtcom-eventlogger up to 0.30-1
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 17 Jun 2008 09:59:41 +0300
+
+rtcom-eventlogger-ui (0.16-1) unstable; urgency=low
+
+  * Live updating of icon and text when an event changes (works also on
+    grouped events.
+  * Dependency from rtcom-eventlogger bumped to 0.29-1.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Mon, 16 Jun 2008 13:49:20 +0300
+
+rtcom-eventlogger-ui (0.15-1) unstable; urgency=low
+
+  * Be compatible with rtcom-eventlogger 0.27-1, because it emits gobject
+    signals when there's a new event ("new-event") or when an event is updated
+    ("event-updated"), rather than the dbus signals.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu, 12 Jun 2008 16:05:58 +0300
+
+rtcom-eventlogger-ui (0.14-1) unstable; urgency=low
+
+  * rtcom-log-model.c: fixing a bug introduced in 0.13-1: the refresh function
+    was broken.
+  * example.c: fixing a debug message in the example.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 10 Jun 2008 13:53:37 +0300
+
+rtcom-eventlogger-ui (0.13-1) unstable; urgency=low
+
+  * rtcom-log-model.{h,c}:
+      - rtcom_log_model_set_group() function added;
+      - preliminary grouping works;
+      - caching algorithm improved so that there's no need of an extra query
+        to find out how many events there are.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 10 Jun 2008 12:41:36 +0300
+
+rtcom-eventlogger-ui (0.12-1) unstable; urgency=low
+
+  * Putting the source_ebook_uid in the model.
+  * Fixing a double unref.
+  * Fixing some bugs and memory leaks.
+  * Having a separate function for compositing the avatar pixbuf.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Fri,  6 Jun 2008 17:45:28 +0300
+
+rtcom-eventlogger-ui (0.11-1) unstable; urgency=low
+
+  * Previous release broke fetching of avatars and presence because the events
+    headers weren't fetched in all cases. Fixed.
+  * Fixing a type in a debug message.
+  * Renaming the local_caching_data variable in _stage_cached to more appropriate
+    name staging_data.
+  * Dependency from rtcom-eventlogger bumped up to 0.20
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  5 Jun 2008 16:43:17 +0300
+
+rtcom-eventlogger-ui (0.10-1) unstable; urgency=low
+
+  * Removing the -std=gnu99 compiler flag
+  * Fetching the event's headers from the same thread, because sqlite3 would
+    fail otherwise
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  5 Jun 2008 15:02:36 +0300
+
+rtcom-eventlogger-ui (0.9-1) unstable; urgency=low
+
+  * Fixing corner case where the event wouldn't have any destination.
+  * Fixing a bug: the number of destinations should be initialized to 1.
+  * Fixing 5 memory leaks.
+  * Refactoring some code.
+  * Saving vcard-field, local-account and remote-account in the model.
+  * Bumping dependency from rtcom-eventlogger to 0.19.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu,  5 Jun 2008 13:05:23 +0300
+
+rtcom-eventlogger-ui (0.8-1) unstable; urgency=low
+
+  * Removed -ansi flag, because it was a problem with the 2007 toolchain.
+  * Be API compatible with rtcom-eventlogger 0.17.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue,  3 Jun 2008 14:00:54 +0300
+
+rtcom-eventlogger-ui (0.7-1) unstable; urgency=low
+
+  * Lowering the amount of events initially cached to just 10.
+  * Avoiding setting the model to NULL before populating all in the example.
+  * The example can show just CALLs; the model supports that.
+  * The example unrefs the model after the view refs it.
+  * Some debug information.
+  * Some wide code reingeneering to overcome some memory leaks.
+  * Updating dependency from rtcom-eventlogger to 0.16 
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Fri, 30 May 2008 18:29:53 +0300
+
+rtcom-eventlogger-ui (0.6-1) unstable; urgency=low
+
+  * Showing tiny service icon on top of the avatar. 
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu, 29 May 2008 15:11:47 +0300
+
+rtcom-eventlogger-ui (0.5-1) unstable; urgency=low
+
+  * Showing the service icon if an avatar is not available.
+  * Upgrading dependency from rtcom-eventlogger to 0.15.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Thu, 29 May 2008 14:19:53 +0300
+
+rtcom-eventlogger-ui (0.4-1) unstable; urgency=low
+
+  * Removed usage of EBook.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Wed, 28 May 2008 18:25:44 +0300
+
+rtcom-eventlogger-ui (0.3-1) unstable; urgency=low
+
+  * Scaling the avatar in the model, and not each time in the cell func in the
+    view.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 27 May 2008 17:26:26 +0300
+
+rtcom-eventlogger-ui (0.2-4) unstable; urgency=low
+
+  * Renaming debian/librtcom-eventlogger-ui1.install to
+    debian/librtcom-eventlogger-ui0.install" 
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 27 May 2008 16:09:36 +0300
+
+rtcom-eventlogger-ui (0.2-3) unstable; urgency=low
+
+  * Changing the package name to librtcom-eventlogger-ui0. 
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 27 May 2008 15:49:39 +0300
+
+rtcom-eventlogger-ui (0.2-2) unstable; urgency=low
+
+  * Fixed build dependency: libosso-abook -> libosso-abook-dev. 
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 27 May 2008 13:37:47 +0300
+
+rtcom-eventlogger-ui (0.2-1) unstable; urgency=low
+
+  * Displaying the contact presence.
+  * Actually displaying the account presence, not the contact presence.
+  * Updating all affected rows when somebody's presence changes.
+  * The populate function now takes a bitmask of known types (such as SMS,
+    CALL, ETC).
+  * Getting the avatar too.
+  * The RTComLogView object now derives from a GtkTreeView directly, rather
+    than going thru a GtkVBox.
+  * Updating dependency from rtcom-eventlogger to 0.12
+  * Fixing dependencies in debian/control
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Tue, 27 May 2008 11:56:18 +0300
+
+rtcom-eventlogger-ui (0.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Salvatore Iovene <ext-salvatore.iovene@nokia.com>  Mon, 31 Mar 2008 14:50:36 +0300
