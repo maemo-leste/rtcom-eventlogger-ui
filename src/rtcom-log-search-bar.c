@@ -28,10 +28,8 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 
-G_DEFINE_TYPE(RTComLogSearchBar, rtcom_log_search_bar, GTK_TYPE_TOOLBAR);
 #define RTCOM_LOG_SEARCH_BAR_GET_PRIVATE(o) \
-    (G_TYPE_INSTANCE_GET_PRIVATE \
-     ((o), RTCOM_LOG_SEARCH_BAR_TYPE, RTComLogSearchBarPrivate))
+  ((RTComLogSearchBarPrivate *)rtcom_log_search_bar_get_instance_private((RTComLogSearchBar *)o))
 
 typedef struct _RTComLogSearchBarPrivate RTComLogSearchBarPrivate;
 struct _RTComLogSearchBarPrivate
@@ -53,6 +51,7 @@ struct _RTComLogSearchBarPrivate
     GtkIMContext       * im_context;
 };
 
+G_DEFINE_TYPE_WITH_PRIVATE(RTComLogSearchBar, rtcom_log_search_bar, GTK_TYPE_TOOLBAR);
 
 /*********************************************************************
  *                                                                   *
@@ -449,7 +448,7 @@ rtcom_log_search_bar_class_init(
         RTComLogSearchBarClass * klass)
 {
     GObjectClass * object_class = G_OBJECT_CLASS(klass);
-    g_type_class_add_private (klass, sizeof(RTComLogSearchBarPrivate));
+
     object_class->dispose = rtcom_log_search_bar_dispose;
 }
 

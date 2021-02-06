@@ -43,6 +43,9 @@ enum
     RTCOM_LOG_MODEL_PROP_CREATE_AGGREGATOR
 };
 
+#define RTCOM_LOG_MODEL_GET_PRIV(log_model) \
+  ((RTComLogModelPrivate *)rtcom_log_model_get_instance_private((RTComLogModel *)log_model))
+
 static void
 rtcom_log_model_class_init(
         RTComLogModelClass * klass);
@@ -61,10 +64,6 @@ rtcom_log_model_finalize(
 
 static guint presence_need_redraw_signal_id = 0;
 static guint avatar_need_redraw_signal_id = 0;
-
-G_DEFINE_TYPE(RTComLogModel, rtcom_log_model, GTK_TYPE_LIST_STORE);
-#define RTCOM_LOG_MODEL_GET_PRIV(log_model) (G_TYPE_INSTANCE_GET_PRIVATE ((log_model), \
-            RTCOM_LOG_MODEL_TYPE, RTComLogModelPrivate))
 
 #define MAX_CACHED_PER_QUERY_FIRST 10
 #define MAX_CACHED_PER_QUERY 100
@@ -136,6 +135,8 @@ struct _RTComLogModelPrivate
     GConfClient *gconf_client;
     guint display_order_notify_id;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE(RTComLogModel, rtcom_log_model, GTK_TYPE_LIST_STORE);
 
 typedef struct _caching_data caching_data_t;
 struct _caching_data
@@ -2228,7 +2229,7 @@ rtcom_log_model_class_init(
         RTComLogModelClass * klass)
 {
     GObjectClass* object_class = G_OBJECT_CLASS(klass);
-    g_type_class_add_private(object_class, sizeof(RTComLogModelPrivate));
+
     object_class->dispose = rtcom_log_model_dispose;
     object_class->finalize = rtcom_log_model_finalize;
     object_class->get_property = rtcom_log_model_get_property;

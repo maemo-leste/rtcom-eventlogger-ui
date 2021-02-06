@@ -29,7 +29,7 @@
 #include <glib/gi18n.h>
 
 #include <gconf/gconf-client.h>
-#include <clockcore-public.h>
+#include <clockcore-gconf.h>
 
 #include <time.h>
 #include <clockd/libtime.h>
@@ -53,12 +53,10 @@ static void
 rtcom_log_view_finalize(
         GObject * obj);
 
-G_DEFINE_TYPE(RTComLogView, rtcom_log_view, GTK_TYPE_TREE_VIEW);
-
 #define CELL_HEIGHT 70
 
-#define RTCOM_LOG_VIEW_GET_PRIV(log_view) (G_TYPE_INSTANCE_GET_PRIVATE ((log_view), \
-            RTCOM_LOG_VIEW_TYPE, RTComLogViewPrivate))
+#define RTCOM_LOG_VIEW_GET_PRIV(log_view) \
+  ((RTComLogViewPrivate *)rtcom_log_view_get_instance_private ((RTComLogView *)log_view))
 
 struct _cell_data
 {
@@ -107,6 +105,8 @@ struct _RTComLogViewPrivate
      * width dynamically. */
     gint fixed_width;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE(RTComLogView, rtcom_log_view, GTK_TYPE_TREE_VIEW);
 
 static void
 _icon_cell_func
@@ -157,7 +157,7 @@ rtcom_log_view_class_init(
         RTComLogViewClass * klass)
 {
     GObjectClass* object_class = G_OBJECT_CLASS(klass);
-    g_type_class_add_private(object_class, sizeof(RTComLogViewPrivate));
+
     object_class->dispose = rtcom_log_view_dispose;
     object_class->finalize = rtcom_log_view_finalize;
 }
