@@ -1,3 +1,15 @@
+rtcom-eventlogger-ui (1.6.0) unstable; urgency=medium
+
+  * fix includes and unused variables
+  * no more mcclient
+  * remove/replace obsolete functions
+  * remove deprecated g_type_class_add_private usage
+  * fix include
+  * remove usage of deprecated utf8 functions
+  * fix build dependencies
+
+ -- Ivan J. <parazyd@dyne.org>  Sat, 06 Feb 2021 20:17:59 +0100
+
 rtcom-eventlogger-ui (1.5) unstable; urgency=medium
 
   * Replace obsolete debian variables.
