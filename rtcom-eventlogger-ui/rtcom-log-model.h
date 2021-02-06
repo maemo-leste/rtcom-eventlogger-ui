@@ -30,7 +30,7 @@
 #include <glib.h>
 #include <gtk/gtkliststore.h>
 #include <gtk/gtkwidget.h>
-#include <libebook/e-book.h>
+#include <libebook/libebook.h>
 #include <rtcom-eventlogger/eventlogger.h>
 #include <libosso-abook/osso-abook-aggregator.h>
 
