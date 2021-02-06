@@ -42,15 +42,7 @@ utf8_strcasestrip (const char *str)
   gunichar c, * str2;
   size_t len;
   gsize result_len, j;
-
-
-#if HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-  gsize buf_len = MY_UC_BUFF_SIZE;
-  gunichar buf_static[MY_UC_BUFF_SIZE];
-  gunichar * buf = &buf_static[0];;
-#else
-  gunichar * buf = NULL;
-#endif
+  gunichar buf[4];
   
   /* sanity check*/
   if(!str || !*str)
@@ -71,28 +63,8 @@ utf8_strcasestrip (const char *str)
   while(p && p < str + len)
     {
       c = g_utf8_get_char(p);
+      result_len = g_unichar_fully_decompose(c, FALSE, buf, 4);
 
-#if HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-      if(!g_unicode_canonical_decomposition_to_buffer (c,buf,buf_len,
-                                                       &result_len)
-         && result_len)
-        {
-          buf = (gunichar*)alloca(result_len*sizeof(gunichar));
-          buf_len = result_len;
-
-          if(!g_unicode_canonical_decomposition_to_buffer (c,buf,buf_len,
-                                                           &result_len))
-            {
-              /* something badly wrong here ...*/
-              g_free(str2);
-              return NULL;
-            }
-        }
-#else
-      g_free(buf);
-      buf = g_unicode_canonical_decomposition (c, &result_len);
-#endif
-        
       for(j = 0; j < result_len; ++j)
         {
           if(i == len)
@@ -133,11 +105,8 @@ utf8_strcasestrip (const char *str)
       p = g_utf8_next_char(p);
     }
 
-#ifndef HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-  g_free(buf);
-#endif
-  
   str2[i] = 0;
+
   return str2;
 }
 
@@ -160,14 +129,7 @@ utf8_strstrcasestrip (const char     *haystack,
   GUnicodeType t;
   gunichar c;
   gsize result_len, j;
-
-#if HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-  gsize buf_len = MY_UC_BUFF_SIZE;
-  gunichar buf_static[MY_UC_BUFF_SIZE];
-  gunichar * buf = &buf_static[0];;
-#else
-  gunichar * buf = NULL;
-#endif
+  gunichar buf[4];
   
   if(!haystack || !*haystack || !needle || !*needle)
     return NULL;
@@ -175,26 +137,8 @@ utf8_strstrcasestrip (const char     *haystack,
   while(*h && *n)
     {
       c = g_utf8_get_char(h);
+      result_len = g_unichar_fully_decompose(c, FALSE, buf, 4);
 
-#if HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-      if(!g_unicode_canonical_decomposition_to_buffer (c,buf,buf_len,
-                                                       &result_len)
-         && result_len)
-        {
-          buf = (gunichar*)alloca(result_len*sizeof(gunichar));
-          buf_len = result_len;
-
-          if(!g_unicode_canonical_decomposition_to_buffer (c,buf,buf_len,
-                                                           &result_len))
-            {
-              /* something badly wrong here ...*/
-              return NULL;
-            }
-        }
-#else
-      g_free(buf);
-      buf = g_unicode_canonical_decomposition (c, &result_len);
-#endif
       for(j = 0; j < result_len; ++j)
         {
           t = g_unichar_type(buf[j]);
@@ -237,9 +181,6 @@ utf8_strstrcasestrip (const char     *haystack,
                   if(!*n)
                     {
                       /* end of needle -- we have a match */
-#ifndef HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-                      g_free(buf);
-#endif
                       if(end)
                         *end = g_utf8_next_char(h) - haystack;
                       
@@ -282,10 +223,6 @@ utf8_strstrcasestrip (const char     *haystack,
       h = g_utf8_next_char(h);
     }
 
-#ifndef HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-  g_free(buf);
-#endif
-
   return NULL;
 }
 
@@ -304,14 +241,7 @@ utf8_strstartswithcasestrip (const char     *a,
   GUnicodeType t;
   gunichar c;
   gsize result_len, j;
-
-#if HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-  gsize buf_len = MY_UC_BUFF_SIZE;
-  gunichar buf_static[MY_UC_BUFF_SIZE];
-  gunichar * buf = &buf_static[0];;
-#else
-  gunichar * buf = NULL;
-#endif
+  gunichar buf[4];
   
   if(!a || !*a || !b || !*b)
     return FALSE;
@@ -319,27 +249,8 @@ utf8_strstartswithcasestrip (const char     *a,
   while(*h && *n)
     {
       c = g_utf8_get_char(h);
+      result_len = g_unichar_fully_decompose (c, FALSE, buf, 4);
 
-#if HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-      if(!g_unicode_canonical_decomposition_to_buffer (c,buf,buf_len,
-                                                       &result_len)
-         && result_len)
-        {
-          buf = (gunichar*)alloca(result_len*sizeof(gunichar));
-          buf_len = result_len;
-
-          if(!g_unicode_canonical_decomposition_to_buffer (c,buf,buf_len,
-                                                           &result_len))
-            {
-              /* something badly wrong here ...*/
-              return FALSE;
-            }
-        }
-#else
-      g_free(buf);
-      buf = g_unicode_canonical_decomposition (c, &result_len);
-#endif
-      
       for(j = 0; j < result_len; ++j)
         {
           t = g_unichar_type(buf[j]);
@@ -367,9 +278,6 @@ utf8_strstartswithcasestrip (const char     *a,
                   if(!*n)
                     {
                       /* end of needle -- we have a match */
-#ifndef HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-                      g_free(buf);
-#endif
                       if(end)
                         *end = g_utf8_next_char(h) - a;
 
@@ -379,9 +287,6 @@ utf8_strstartswithcasestrip (const char     *a,
               else
                 {
                   /* bad luck */
-#ifndef HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-                  g_free(buf);
-#endif
                   return FALSE;
                 }
               break;
@@ -390,10 +295,6 @@ utf8_strstartswithcasestrip (const char     *a,
       h = g_utf8_next_char(h);
     }
   
-#ifndef HAVE_DECL_G_UNICODE_CANONICAL_DECOMPOSITION_TO_BUFFER
-  g_free(buf);
-#endif
-
   /* run out of haystack before the end of needle */
   return FALSE;
 }
