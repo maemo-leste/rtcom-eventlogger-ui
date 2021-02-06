@@ -21,8 +21,7 @@ PKG_CHECK_MODULES(
 	rtcom-eventlogger-plugins >= 1.0
 	dbus-1
 	libosso
-	libosso-abook-1.0 >= 4.20081010
-	libmcclient >= 5
+	libosso-abook-1.0
         gconf-2.0
         libclockcore0-0)
 AC_SUBST(RTCOM_EVENTLOGGER_UI_CFLAGS)

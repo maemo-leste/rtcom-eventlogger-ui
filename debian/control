@@ -9,10 +9,10 @@ Build-Depends:
  librtcom-eventlogger-dev (>= 1.1),
  librtcom-eventlogger-plugins-dev (>= 1.0),
  libosso-dev,
- libosso-abook-dev (>= 4.20081010),
+ libosso-abook-dev,
  libhildon1-dev,
- libmcclient-dev (>= 5),
- libclockcore-dev,
+ libtelepathy-glib-dev,
+ libclockcore0-dev,
  libcityinfo-dev,
  libtime-dev,
 Standards-Version: 4.3.0
