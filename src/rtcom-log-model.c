@@ -384,9 +384,8 @@ static const gchar *
 vcard_field_for_account (RTComLogModel *model, const gchar *local_uid)
 {
     RTComLogModelPrivate * priv = RTCOM_LOG_MODEL_GET_PRIV(model);
-    McAccount *acc;
-    McProfile *profile;
-    const gchar *id;
+    TpAccount *acc;
+    TpProtocol *protocol;
     const gchar *vcard_field;
 
     vcard_field = g_hash_table_lookup (priv->vcard_field_mapping, local_uid);
@@ -402,17 +401,19 @@ vcard_field_for_account (RTComLogModel *model, const gchar *local_uid)
     if (!acc)
         return NULL;
 
-    id = mc_account_compat_get_profile (acc);
-    profile = mc_profile_lookup (id);
-    if (!profile)
+    protocol = osso_abook_account_manager_get_account_protocol_object (
+          priv->account_manager, acc);
+
+    if (!protocol)
         return NULL;
 
-    vcard_field = mc_profile_get_vcard_field (profile);
+    vcard_field = tp_protocol_get_vcard_field (protocol);
     if (!vcard_field)
         return NULL;
 
     g_hash_table_insert (priv->vcard_field_mapping, g_strdup (local_uid),
         g_strdup (vcard_field));
+
     return vcard_field;
 }
 
@@ -557,13 +558,10 @@ _get_contact_from_abook_uid (RTComLogModel *model, const gchar *abook_uid)
 static void
 _remote_contact_discovery (RTComLogModel *model)
 {
-    RTComLogModelPrivate * priv;
     GtkTreeIter iter;
     gboolean valid;
 
     g_debug("%s: discovering remote contacts if needed", G_STRFUNC);
-
-    priv = RTCOM_LOG_MODEL_GET_PRIV(model);
 
     valid = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(model), &iter);
     while(valid)
@@ -785,9 +783,6 @@ _stage_cached (gpointer data)
           * deletion_ebook_uid = NULL,
           * deletion_local_uid = NULL,
           * deletion_remote_uid = NULL;
-
-    GtkIconTheme * icon_theme;
-    icon_theme = gtk_icon_theme_get_default();
 
     model = caching_data->model;
     priv = RTCOM_LOG_MODEL_GET_PRIV(model);
@@ -2844,9 +2839,7 @@ static const GdkPixbuf *
 _get_service_icon (RTComLogModel *model, const gchar *local_uid)
 {
     RTComLogModelPrivate * priv = RTCOM_LOG_MODEL_GET_PRIV(model);
-    McAccount *acc;
-    McProfile *profile;
-    const gchar *id;
+    TpAccount *acc;
     const gchar *icon_name;
     GtkIconTheme * icon_theme;
     GdkPixbuf * service_icon;
@@ -2861,22 +2854,22 @@ _get_service_icon (RTComLogModel *model, const gchar *local_uid)
     if (!acc)
       return NULL;
 
-    id = mc_account_compat_get_profile (acc);
-
-    profile = mc_profile_lookup (id);
-
-    if (!profile)
-      return NULL;
-
-    icon_name = mc_profile_get_branding_icon_name (profile);
+    icon_name = tp_account_get_icon_name (acc);
 
     if (!icon_name)
-        icon_name = mc_profile_get_icon_name (profile);
+    {
+      TpProtocol *protocol =
+          osso_abook_account_manager_get_account_protocol_object (
+            priv->account_manager, acc);
 
-    g_object_unref (profile);
+      if (!protocol)
+        return NULL;
 
-    if (!icon_name)
-      return NULL;
+      icon_name = tp_protocol_get_icon_name (protocol);
+
+      if (!icon_name)
+        return NULL;
+    }
 
     icon_theme = gtk_icon_theme_get_default();
 
