@@ -2402,9 +2402,10 @@ rtcom_log_model_init(
             (GCallback) _refresh_hint_callback,
             log_model);
 
-
+#if !GLIB_CHECK_VERSION(2,31,0)
     if(!g_thread_supported())
         g_thread_init(NULL);
+#endif
 
     _create_abook_account_manager (log_model);
 
@@ -2728,10 +2729,8 @@ rtcom_log_model_populate_query(
     {
         priv->cancel_threads = FALSE;
         priv->done_caching = FALSE;
-        priv->cache_thread = g_thread_create(
-                (GThreadFunc) _threaded_cached_load,
-                model,
-                TRUE, NULL);
+        priv->cache_thread = g_thread_new(
+              NULL, (GThreadFunc) _threaded_cached_load, model);
     }
 }
 
