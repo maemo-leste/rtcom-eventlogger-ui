@@ -19,7 +19,7 @@
 
 #include <hildon/hildon-program.h>
 #include <libosso.h>
-#include <libosso-abook/osso-abook.h>
+#include <libosso-abook/osso-abook-init.h>
 #include <rtcom-eventlogger/eventlogger.h>
 
 #include <stdlib.h>
@@ -27,7 +27,7 @@
 #include <time.h>
 #include <math.h>
 
-#include <libebook/e-book.h>
+#include <libebook/libebook.h>
 
 #include "rtcom-eventlogger-ui/rtcom-log-view.h"
 #include "rtcom-eventlogger-ui/rtcom-log-model.h"
@@ -171,8 +171,6 @@ main(int argc, char * argv[])
 
     GtkWidget * scrolled_window = NULL;
 
-    RTComEl * eventlogger = NULL;
-
     OssoABookAggregator * aggr;
 
     gtk_init(&argc, &argv);
@@ -231,8 +229,6 @@ main(int argc, char * argv[])
     g_object_unref(log_model);
 
     rtcom_log_model_populate(log_model, NULL);
-
-    eventlogger = rtcom_log_model_get_eventlogger(log_model);
 
     box = gtk_vbox_new(FALSE, 10);
 
