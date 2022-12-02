@@ -1,3 +1,10 @@
+rtcom-eventlogger-ui (1.6.1) unstable; urgency=medium
+
+  * Temporarily stub a new case in the switch statement to allow for Chimaera
+    building to complete
+
+ -- Merlijn Wajer <merlijn@wizzup.org>  Fri, 02 Dec 2022 19:15:20 +0100
+
 rtcom-eventlogger-ui (1.6.0) unstable; urgency=medium
 
   * fix includes and unused variables
