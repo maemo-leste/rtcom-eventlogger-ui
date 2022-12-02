@@ -1664,6 +1664,9 @@ _event_deleted_callback (
             gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
             break;
 
+        case RTCOM_EL_QUERY_GROUP_BY_EVENTS_LOCAL_UID:
+            break;
+
         case RTCOM_EL_QUERY_GROUP_BY_UIDS:
         {
             /**
