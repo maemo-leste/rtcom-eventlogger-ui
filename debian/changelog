@@ -1,3 +1,9 @@
+rtcom-eventlogger-ui (1.6.2) unstable; urgency=medium
+
+  * start-time is 64 bit integer already
+
+ -- Ivaylo Dimitrov <ivo.g.dimitrov.75@gmail.com>  Sun, 05 Jul 2026 20:32:43 +0300
+
 rtcom-eventlogger-ui (1.6.1) unstable; urgency=medium
 
   * Temporarily stub a new case in the switch statement to allow for Chimaera
