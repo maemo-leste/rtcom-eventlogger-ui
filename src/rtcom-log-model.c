@@ -770,7 +770,7 @@ _stage_cached (gpointer data)
         const gchar * remote_ebook_uid;
         const gchar * text;
         const gchar * icon_name;
-        gint timestamp;
+        gint64 timestamp;
         gint count;
         const gchar * group_title;
         const gchar * event_type;
@@ -812,6 +812,8 @@ _stage_cached (gpointer data)
 
 #define LOOKUP_INT(x) \
     g_value_get_int(g_hash_table_lookup(staging_data.values, x))
+#define LOOKUP_INT64(x) \
+    g_value_get_int64(g_hash_table_lookup(staging_data.values, x))
 #define LOOKUP_BOOL(x) \
     g_value_get_boolean(g_hash_table_lookup(staging_data.values, x))
 #define LOOKUP_STR(x) \
@@ -826,7 +828,7 @@ _stage_cached (gpointer data)
         staging_data.remote_ebook_uid = LOOKUP_STR ("remote-ebook-uid");
         staging_data.text = LOOKUP_STR ("content");
         staging_data.icon_name = LOOKUP_STR ("icon-name");
-        staging_data.timestamp = LOOKUP_INT ("start-time");
+        staging_data.timestamp = LOOKUP_INT64 ("start-time");
         staging_data.count = LOOKUP_INT ("event-count");
         staging_data.group_title = LOOKUP_STR ("group-title");
         staging_data.event_type = LOOKUP_STR ("event-type");
@@ -860,7 +862,7 @@ _stage_cached (gpointer data)
 
         g_debug("Staging event:\n\tid: %d\n\tservice: %s\n\tgroup_uid: %s\n\tlocal_uid: %s\n\tremote_uid: %s\n\t"
                 "remote_name: %s\n\tremote_ebook_uid: %s\n\ttext: %s\n\ticon_name: %s\n\t"
-                "timestamp: %d\n\tevents in group: %d\n\tgroup title: %s\n\tevent type: %s\n\t"
+                "timestamp: %ld\n\tevents in group: %d\n\tgroup title: %s\n\tevent type: %s\n\t"
                 "outgoing: %s\n\t flags: %d\n",
                 staging_data.event_id,
                 staging_data.service,

@@ -921,7 +921,7 @@ _text_cell_func(
   gchar *remote_name;
   gchar *remote_uid;
   gchar *text;
-  gint timestamp;
+  gint64 timestamp;
   gint count;
   gchar *group_title;
   gchar *markup;
