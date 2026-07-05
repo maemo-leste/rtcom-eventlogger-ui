@@ -862,7 +862,7 @@ _stage_cached (gpointer data)
 
         g_debug("Staging event:\n\tid: %d\n\tservice: %s\n\tgroup_uid: %s\n\tlocal_uid: %s\n\tremote_uid: %s\n\t"
                 "remote_name: %s\n\tremote_ebook_uid: %s\n\ttext: %s\n\ticon_name: %s\n\t"
-                "timestamp: %ld\n\tevents in group: %d\n\tgroup title: %s\n\tevent type: %s\n\t"
+                "timestamp: %"G_GINT64_FORMAT"\n\tevents in group: %d\n\tgroup title: %s\n\tevent type: %s\n\t"
                 "outgoing: %s\n\t flags: %d\n",
                 staging_data.event_id,
                 staging_data.service,
